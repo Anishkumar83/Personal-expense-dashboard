@@ -1,0 +1,402 @@
+:root {
+  --primary: #007bff;
+  --success: #28a745;
+  --danger: #dc3545;
+  --bg: #f5f7fa;
+  --text: #333;
+  --card-bg: rgba(255, 255, 255, 0.15);
+  --border: #ccc;
+  --header-bg: rgba(255, 255, 255, 0.25);
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background: linear-gradient(to bottom right, #e3f2fd, #c5e1fa);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.dashboard-navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #00b4db, #0083b0);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.dashboard-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+  color: white;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.logout-button:hover {
+  background-color: #d32f2f;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 1rem;
+  animation: fadeIn 0.6s ease-in;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  animation: slideUp 0.4s ease-in-out;
+}
+
+.search-input,
+.group-select {
+  /* flex: 1 1 200px; */
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  transition: all 0.3s ease;
+  min-width: 180px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+@media screen and (max-width: 750px) {
+  .controls {
+    width: 100%; 
+    /* display: flex; */
+     /* align-items: stretch; */
+    flex-direction: column;
+    gap: 10px; /* adds spacing between input/select/button */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .controls input,
+  .controls select,
+  .controls select option,
+  .controls button {
+    width: 100%;  /* make each child take full width */
+    font-size: 16px;
+    height: 50px;
+
+    box-sizing: border-box;
+  }
+}
+
+
+
+.search-input::placeholder {
+  color: #666;
+}
+
+.search-input:focus,
+.group-select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.add-btn {
+  flex: 0 0 auto;
+  background-color: var(--success);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Pagination */
+.month-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.month-pagination span {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.icon-btn {
+  background-color: var(--primary);
+  border: none;
+  color: white;
+  padding: 0.6rem 0.9rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.icon-btn:hover {
+  transform: scale(1.15);
+  background-color: #3c40c6;
+}
+
+/* Form */
+.expense-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  animation: fadeIn 0.4s ease;
+}
+
+.expense-form input {
+  flex: 1 1 200px;
+  padding: 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  color: var(--text);
+}
+
+.submit-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Expense Group */
+.expense-group {
+  margin-top: 2rem;
+  animation: slideUp 0.4s ease;
+}
+
+.expense-group h3 {
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+
+/* Glassmorphism Table */
+.expense-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.expense-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px var(--shadow);
+  animation: fadeIn 0.3s ease-in-out;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.expense-table thead {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.expense-table th,
+.expense-table td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 0.95rem;
+  color: #222;
+}
+
+.expense-table th:nth-child(1),
+.expense-table td:nth-child(1) {
+  width: 60px;
+}
+
+.expense-table th:last-child,
+.expense-table td:last-child {
+  width: 200px;
+}
+
+.expense-table tbody tr {
+  transition: all 0.25s ease-in-out;
+}
+
+.expense-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.005);
+}
+
+/* Action Buttons */
+.edit-btn,
+.delete-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin: 0 0.2rem;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.edit-btn {
+  background-color: var(--primary);
+}
+.edit-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background-color: var(--danger);
+}
+.delete-btn:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Chart */
+.chart-container {
+  margin-top: 3rem;
+}
+
+/* No Data */
+.no-data {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  color: gray;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .dashboard-navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .dashboard-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .logout-button {
+    position: static;
+    transform: none;
+    align-self: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input,
+  .group-select,
+  .add-btn {
+    width: 100%;
+  }
+
+  .expense-form {
+    flex-direction: column;
+  }
+
+  .expense-table {
+    font-size: 0.9rem;
+  }
+
+  .month-pagination {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+}
