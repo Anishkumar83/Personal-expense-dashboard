@@ -30,5 +30,4 @@ Thumbs.db
 
 # --- Environment Files ---
 .env
-backend/src/main/resources/application.properties
 application.yml
