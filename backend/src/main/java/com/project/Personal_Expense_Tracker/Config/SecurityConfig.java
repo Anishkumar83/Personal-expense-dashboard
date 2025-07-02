@@ -67,13 +67,20 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOriginPattern("http://localhost:5173"); // Allow frontend origin
-        config.setAllowCredentials(true); // Enable cookies/authorization headers
-        config.setAllowedHeaders(List.of("*")); // Allow all headers
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Allow HTTP methods
+
+        // Allow both local and deployed frontend origins
+        config.setAllowedOriginPatterns(List.of(
+                "http://localhost:5173",                   // local dev
+                "https://your-frontend.vercel.app"         // replace with actual Vercel URL
+        ));
+
+        config.setAllowCredentials(true); // For cookies / Authorization headers
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
     }
+
 }
